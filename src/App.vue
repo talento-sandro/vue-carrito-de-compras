@@ -11,8 +11,8 @@
       </div>
 
       <div class="col-md5 my-5">
-        <carrito :items="carrito"></carrito>    <!-- se envía al props items el objeto carrito -->
-      </div>
+        <carrito :items="carrito" v-on:remover-item ="removerProducto"></carrito>    <!-- se envía al componente Carrito.vue a travez de props el items el objeto carrito -->
+      </div>                 <!-- recibe el evento removerProducto con la información de item -->    
     </div>
   </div>
 </template>
@@ -44,6 +44,9 @@ export default {
         return true;
       }
       return false;
+    },
+    removerProducto(producto){
+      this.carrito = this.carrito.filter(item => item.id != producto.id);   // crea nuevamente el arreglo filtrado sin ese producto
     }
   },
 }

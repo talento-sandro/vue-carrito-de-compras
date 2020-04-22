@@ -2,11 +2,11 @@
     <div class="card my-5">
         <div class="card-body">
             <h5 class="text-center card-title">{{producto.titulo}}</h5>
-            <img :src="producto.imagen" width="290" height="150">       <!-- se hace un binding para mandar información a la propiedad src, -->
+            <img :src="producto.imagen" width="290" height="150">       <!-- se hace un binding para mandar información a la propiedad src -->
             <p class="text-center text-muted card-text display-4">$ {{ Number(producto.precio).toFixed()}}</p>  <!-- información recibida con props  -->
-            <button @click="agregarCarro(producto)" class="btn btn-primary form-control" :disabled="estaEnCarrito">
-                {{ estaEnCarrito ? 'Agregado' : 'Agregar al carrito' }}
-            </button>    <!-- se envía la información del producto al padre App.vue  /  se deshabilita boton si es true -->
+            <button @click="agregarCarro(producto)" class="btn btn-primary form-control" :disabled="estaEnCarrito">   <!-- agregarCarro(producto) envía la información del producto al padre App.vue  -->
+                {{ estaEnCarrito ? 'Agregado' : 'Agregar al carrito' }} <!-- se deshabilita boton si estaEnCarrito es true o false -->
+            </button>    
         </div>      
     </div>
 </template>
