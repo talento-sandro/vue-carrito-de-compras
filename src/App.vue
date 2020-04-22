@@ -11,9 +11,10 @@
       </div>
 
       <div class="col-md5 my-5">
-        <carrito :items="carrito" v-on:remover-item ="removerProducto"></carrito>    <!-- se envía al componente Carrito.vue a travez de props el items el objeto carrito -->
-      </div>                 <!-- recibe el evento removerProducto con la información de item -->    
-    </div>
+        <carrito :items="carrito" v-on:pagar="pagar" v-on:remover-item ="removerProducto"></carrito>    <!-- :items="carrito" envía el arreglo carrito a Carrito.vue a travez de props items -->
+      </div>          <!-- v:on recibe el evento pagar desde carrito y cuando se ejecute el evento se llama al metodo pagar -->    
+    </div>            <!-- v-on recibe el evento remover-item con la información de item desde carrito  -->
+    
   </div>
 </template>
 
@@ -47,6 +48,10 @@ export default {
     },
     removerProducto(producto){
       this.carrito = this.carrito.filter(item => item.id != producto.id);   // crea nuevamente el arreglo filtrado sin ese producto
+    },
+    pagar(){
+      this.carrito = [];    // se vacía el arreglo
+      alert('Venta completada !!!')
     }
   },
 }
